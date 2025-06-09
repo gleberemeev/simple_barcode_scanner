@@ -21,7 +21,7 @@ class WindowBarcodeScanner extends StatelessWidget {
   final bool? centerTitle;
   final BarcodeAppBar? barcodeAppBar;
   final int? delayMillis;
-  final Function? onClose;
+  final WebviewController? controller;
 
   const WindowBarcodeScanner({
     super.key,
@@ -35,12 +35,12 @@ class WindowBarcodeScanner extends StatelessWidget {
     this.centerTitle,
     this.barcodeAppBar,
     this.delayMillis,
-    this.onClose,
+    this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
-    WebviewController controller = WebviewController();
+    WebviewController controller = this.controller ?? WebviewController();
     bool isPermissionGranted = false;
 
     _checkCameraPermission().then((granted) {
